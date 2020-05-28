@@ -65,7 +65,7 @@ function dYdt = FN_ODE_PID(t,y)
                                  - O1th(A,k.gA0)    - O1th(A,k.gD);
                O0th(k.bM*k.Y) - OMMp(M,A*k.gM,k.KM) - O1th(M,k.gD);
                O1th(X1,k.beta_PID_delay) ...
-                  - O1th(X_delay1,k.beta_PID_delay) ...
+                  - O1th(X_delay1,k.bC) ...
                   - OMMp(X_delay1,k.feedback_gain_process*XC,k.KF)];
         
    elseif((k.do_PID_delay==1)&&(k.N_PID_delay==2))
@@ -82,7 +82,7 @@ function dYdt = FN_ODE_PID(t,y)
                   - O1th(X_delay1,k.beta_PID_delay) ...
                   - OMMp(X_delay1,k.feedback_gain_process*XC,k.KF);
                O1th(X_delay1,k.beta_PID_delay) ...
-                  - O1th(X_delay2,k.beta_PID_delay)];
+                  - O1th(X_delay2,k.bC)];
         
    elseif((k.do_PID_delay==1)&&(k.N_PID_delay==3))
        dYdt = [O0th(k.mu*k.Y) - O2th(Z1,Z2,k.et)    - O1th(Z1,k.gD);
@@ -100,7 +100,7 @@ function dYdt = FN_ODE_PID(t,y)
                O1th(X_delay1,k.beta_PID_delay) ...
                   - O1th(X_delay2,k.beta_PID_delay);
                O1th(X_delay2,k.beta_PID_delay) ...
-                  - O1th(X_delay3,k.beta_PID_delay)];
+                  - O1th(X_delay3,k.bC)];
         
    elseif((k.do_PID_delay==1)&&(k.N_PID_delay==4))
        dYdt = [O0th(k.mu*k.Y) - O2th(Z1,Z2,k.et)    - O1th(Z1,k.gD);
@@ -120,7 +120,7 @@ function dYdt = FN_ODE_PID(t,y)
                O1th(X_delay2,k.beta_PID_delay) ...
                   - O1th(X_delay3,k.beta_PID_delay);
                O1th(X_delay3,k.beta_PID_delay) ...
-                  - O1th(X_delay4,k.beta_PID_delay)];
+                  - O1th(X_delay4,k.bC)];
    end;
         
         
